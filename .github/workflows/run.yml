@@ -1,0 +1,21 @@
+---
+
+name: Run Solutions
+on:
+  push:
+
+
+jobs:
+  run:
+    name: Run solutions
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+      - name: Install pipenv
+        run: sudo apt-get -y --no-install-recommends install pipenv
+      - run: make all
