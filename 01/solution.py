@@ -23,14 +23,12 @@ NUMBERS = {
 
 
 def calibration_value(line, part2=False):
-    digits = []
     matches = (
         re.findall(r"(?=(\d|one|two|three|four|five|six|seven|eight|nine))", line)
         if part2
         else re.findall(r"(\d)", line)
     )
-    for m in matches:
-        digits.append(NUMBERS[m])
+    digits = tuple(NUMBERS[m] for m in matches)
     return (digits[0] * 10) + digits[-1]
 
 
